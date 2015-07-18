@@ -83,11 +83,16 @@ Gallery.prototype.showPhotos = function() {
 		    photosWrapper.appendChild(img);			    
 		}
 	}
+	
+	photosWrapper.scrollTop = 0;
+	
+	photosWrapper.onscroll = function (e) {  
+		console.log("scrolling");
+	} 
+	
 };
 
-Gallery.prototype.getPosition = function() {
-	return this.latlng;	
-};
+
 
 function removeGallery() {
 	console.log("remove gallery");
@@ -101,6 +106,10 @@ closeGalleryBtn.addEventListener("click", function(e){
 	e.preventDefault();
 	removeGallery();
 });
+
+Gallery.prototype.getPosition = function() {
+	return this.latlng;	
+};
 
 
 

@@ -25,6 +25,7 @@ html, body, #map-canvas {
   color: white;
   font-size: 30px;
   text-decoration: none;
+  z-index: 999;
 }
 #gallery #photos {
   height: 100%;
@@ -32,6 +33,7 @@ html, body, #map-canvas {
   position: absolute;
   overflow-y: scroll;
   overflow-x: hidden;
+  z-index: 800;
 }
 #gallery h2 {
   color: white;
