@@ -9,7 +9,8 @@
  
  
 var galleryWrapper = document.getElementById("gallery"),
-		photosWrapper = document.getElementById("photos");
+		photosWrapper = document.getElementById("photos"),
+		closeGalleryBtn = document.getElementById("btn-close-gallery");
 
 function Gallery(latlng, map, args) {
 	this.latlng = latlng;	
@@ -18,25 +19,6 @@ function Gallery(latlng, map, args) {
 }
 
 Gallery.prototype = new google.maps.OverlayView();
-
-Gallery.prototype.showPhotos = function() {
-
-	console.log(this.args.title);
-
-	// Show Gallery Wrapper
-	galleryWrapper.style.display = "block";
-	
-	//Append images to Gallery Wrapper
-	if(this.args.numImages) {
-		for(var i = 1; i < this.args.numImages; i++) {
-		    var img = document.createElement("IMG");
-		    img.setAttribute("src", "photos/" + this.args.title + "0" + i + ".jpg");
-		    img.setAttribute("class", "gallery-img");
-
-		    photosWrapper.appendChild(img);			    
-		}
-	}
-};
 
 Gallery.prototype.draw = function() {
 	
@@ -80,10 +62,48 @@ Gallery.prototype.draw = function() {
 	}
 };
 
+
+
+Gallery.prototype.showPhotos = function() {
+
+	var self = this;
+
+	console.log(this.args.title + " gallery is showing");
+
+	// Show Gallery Wrapper
+	galleryWrapper.style.display = "block";
+	
+	//Append images to Gallery Wrapper
+	if(this.args.numImages) {
+		for(var i = 1; i < this.args.numImages; i++) {
+		    var img = document.createElement("IMG");
+		    img.setAttribute("src", "photos/" + this.args.title + "0" + i + ".jpg");
+		    img.setAttribute("class", "gallery-img");
+
+		    photosWrapper.appendChild(img);			    
+		}
+	}
+	
+	closeGalleryBtn.addEventListener("click", function(e){
+		e.preventDefault();
+		self.removeGallery();
+	});
+	
+};
+
+
+
+Gallery.prototype.removeGallery = function removeGallery() {
+	console.log("removing photos");
+	while (photosWrapper.hasChildNodes()) {
+	    photosWrapper.removeChild(photosWrapper.lastChild);
+	}	
+	galleryWrapper.style.display = "none";
+}
+
 Gallery.prototype.getPosition = function() {
 	return this.latlng;	
 };
 
-Gallery.prototype.removePhotos = function() {
-	
-}
+
+
