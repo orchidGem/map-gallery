@@ -68,7 +68,7 @@ Gallery.prototype.showPhotos = function() {
 
 	var self = this;
 
-	console.log(this.args.title + " gallery is showing");
+	console.log("show " + this.args.title + " gallery");
 
 	// Show Gallery Wrapper
 	galleryWrapper.style.display = "block";
@@ -83,27 +83,24 @@ Gallery.prototype.showPhotos = function() {
 		    photosWrapper.appendChild(img);			    
 		}
 	}
-	
-	closeGalleryBtn.addEventListener("click", function(e){
-		e.preventDefault();
-		self.removeGallery();
-	});
-	
 };
 
+Gallery.prototype.getPosition = function() {
+	return this.latlng;	
+};
 
-
-Gallery.prototype.removeGallery = function removeGallery() {
-	console.log("removing photos");
+function removeGallery() {
+	console.log("remove gallery");
 	while (photosWrapper.hasChildNodes()) {
 	    photosWrapper.removeChild(photosWrapper.lastChild);
 	}	
 	galleryWrapper.style.display = "none";
 }
 
-Gallery.prototype.getPosition = function() {
-	return this.latlng;	
-};
+closeGalleryBtn.addEventListener("click", function(e){
+	e.preventDefault();
+	removeGallery();
+});
 
 
 
