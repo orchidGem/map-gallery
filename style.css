@@ -1,0 +1,51 @@
+html, body, #map-canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+#gallery {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#gallery #btn-close-me {
+  position: absolute;
+  right: 2%;
+  top: 3%;
+  color: white;
+  display: none;
+  font-size: 30px;
+  text-decoration: none;
+}
+#gallery #photos {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#gallery h2 {
+  color: white;
+  margin: 20px auto;
+  font-weight: 100;
+}
+.gallery-img {
+  display: block;
+  max-height: 100%;
+  height: 70%;
+  width: auto;
+  margin: 0 auto 200px;
+}
+#photos img:first-of-type {
+  opacity: 1;
+}

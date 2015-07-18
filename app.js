@@ -39,9 +39,18 @@ function initialize() {
 	
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
+		
+	overlay1 = new Gallery( myLatlng, map, { 
+		marker_id: 'my-marker',
+		numImages: 8,
+		title: "france"
+	});
 	
-	overlay = new CustomMarker( myLatlng, map, { marker_id: 'my-marker' } );
-	overlay2 = new CustomMarker( new google.maps.LatLng(43.769560, 11.255814), map, { marker_id: 'my-marker2' } );
+	overlay2 = new Gallery( new google.maps.LatLng(43.769560, 11.255814), map, { 
+		marker_id: 'my-marker2',
+		numImages: 6,
+		title: "italy"
+	});
 
 }
 				
