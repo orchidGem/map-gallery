@@ -51,6 +51,18 @@ function initialize() {
 		numImages: 6,
 		title: "italy"
 	});
+	
+	overlay3 = new Gallery( new google.maps.LatLng(47.606209, -122.332071), map, { 
+		marker_id: 'my-marker3',
+		numImages: 2,
+		title: "seattle"
+	});
+	
+	overlay3 = new Gallery( new google.maps.LatLng(36.204824, 138.252924), map, { 
+		marker_id: 'my-marker4',
+		numImages: 2,
+		title: "japan"
+	});
 
 }
 				

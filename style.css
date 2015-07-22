@@ -42,7 +42,7 @@ html, body, #map-canvas {
   font-weight: 100;
 }
 .gallery-img {
-	display: block;
+  display: block;
   max-height: 100%;
   height: 80%;
   width: auto;
@@ -52,16 +52,16 @@ html, body, #map-canvas {
 #photos img:first-of-type {
   opacity: 1;
 }
-.marker img {
-	display: block;
-	padding: 5px;
-	border-radius: 5px;
-	background: white;
-	position: absolute;
-	top: -120px;
-	left: -70px;
-	-ms-transform: scale(0,0); 
-	-webkit-transform: scale(0,0);
-	transform: scale(0,0);
-	z-index: 99999;
+.marker h2 {
+  transform: scale(0, 0);
+  position: absolute;
+  top: -5px;
+  color: white;
+  z-index: 0;
+}
+.marker-icon {
+  position: absolute;
+  transform: scale(0.9, 0.9); 
+  cursor: pointer;
+  z-index: 1;
 }
