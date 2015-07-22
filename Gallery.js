@@ -10,6 +10,7 @@
 
 var galleryWrapper = document.getElementById("gallery"),
 		photosWrapper = document.getElementById("photos"),
+		galleryTitle = document.getElementById("gallery-title"),
 		closeGalleryBtn = document.getElementById("btn-close-gallery");
 
 function Gallery(latlng, map, args) {
@@ -106,8 +107,9 @@ Gallery.prototype.draw = function() {
 // Show Photo Gallery
 Gallery.prototype.showPhotos = function() {
 
-	var self = this;
-	galleryWrapper.style.display = "block";
+	galleryTitle.innerHTML = this.args.title;
+
+	TweenMax.to(galleryWrapper, 0.5, {display: "block", opacity: 1, ease:Power1.easeOut });
 	
 	//Append images to Gallery Wrapper
 	if(this.args.numImages) {
@@ -130,7 +132,7 @@ function removeGallery() {
 	while (photosWrapper.hasChildNodes()) {
 	    photosWrapper.removeChild(photosWrapper.lastChild);
 	}	
-	galleryWrapper.style.display = "none";
+	TweenMax.to(galleryWrapper, 0.5, {display: "none", opacity: 0, ease:Power1.easeOut });
 }
 
 closeGalleryBtn.addEventListener("click", function(e){

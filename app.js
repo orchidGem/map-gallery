@@ -40,30 +40,30 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
 		
-	overlay1 = new Gallery( myLatlng, map, { 
-		marker_id: 'my-marker',
+	var recentGallery = new Gallery( myLatlng, map, { 
+		title: "france",
+		description: "Honeymoon to France, 2015",
 		numImages: 8,
-		title: "france"
 	});
 	
-	overlay2 = new Gallery( new google.maps.LatLng(43.769560, 11.255814), map, { 
-		marker_id: 'my-marker2',
+	new Gallery( new google.maps.LatLng(43.769560, 11.255814), map, { 
+		title: "italy",
+		description: "Study abroad in college, 2003",
 		numImages: 6,
-		title: "italy"
 	});
 	
-	overlay3 = new Gallery( new google.maps.LatLng(47.606209, -122.332071), map, { 
-		marker_id: 'my-marker3',
+	new Gallery( new google.maps.LatLng(47.606209, -122.332071), map, { 
+		title: "seattle",
+		description: "Visit Nathania with Raelyn, 2007",
 		numImages: 2,
-		title: "seattle"
 	});
 	
-	overlay3 = new Gallery( new google.maps.LatLng(36.204824, 138.252924), map, { 
-		marker_id: 'my-marker4',
+	new Gallery( new google.maps.LatLng(36.204824, 138.252924), map, { 
+		title: "japan",
+		description: "Visit Sarah in Japan, 2009",
 		numImages: 2,
-		title: "japan"
 	});
-
+	
 }
 				
 google.maps.event.addDomListener(window, 'load', initialize);

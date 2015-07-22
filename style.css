@@ -12,11 +12,12 @@ html, body, #map-canvas {
   position: absolute;
   background: rgba(0, 0, 0, 0.9);
   z-index: 999;
-  overflow: hidden;
+  overflow: hidden;3
   text-align: center;
   width: 100%;
   height: 100%;
   display: none;
+  opacity: 0;
 }
 #gallery #btn-close-gallery {
   position: absolute;
@@ -40,6 +41,7 @@ html, body, #map-canvas {
   color: white;
   margin: 20px auto;
   font-weight: 100;
+  text-align: center;
 }
 .gallery-img {
   display: block;
