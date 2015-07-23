@@ -39,8 +39,8 @@ function initialize() {
 	
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
-		
-	var recentGallery = new Gallery( myLatlng, map, { 
+			
+	var france = new Gallery( myLatlng, map, { 
 		title: "france",
 		description: "Honeymoon to France, 2015",
 		numImages: 8,
@@ -64,6 +64,23 @@ function initialize() {
 		numImages: 2,
 	});
 	
+	myvar = getQueryVariable("show");
+	if(myvar) {
+		france.showPhotos();
+	}
+	
 }
 				
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+

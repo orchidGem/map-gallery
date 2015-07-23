@@ -80,9 +80,9 @@ Gallery.prototype.draw = function() {
 		TweenMax.to(icon, 0.5, {scale: 1, ease:Power1.easeOut });
 		
 		if(this.windowPosition === "left"){
-			TweenMax.to(title, 0.5, {scale: 1, left: "50px", ease:Power1.easeOut });
+			TweenMax.to(title, 0.2, {scale: 1, left: "50px", ease:Power1.easeOut });
 		} else {
-			TweenMax.to(title, 0.5, {scale: 1, right: "10px", ease:Power1.easeOut });
+			TweenMax.to(title, 0.2, {scale: 1, right: "10px", ease:Power1.easeOut });
 		}
 
 	});
@@ -90,9 +90,9 @@ Gallery.prototype.draw = function() {
 	google.maps.event.addDomListener(div, "mouseleave", function(event) {
 			TweenMax.to(icon, 0.5, {scale: 0.9, ease:Power1.easeOut });
 			if(this.windowPosition === "left"){
-				TweenMax.to(title, 0.5, {scale: 0.2, left: "2px", ease:Power1.easeOut });
+				TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut });
 			} else {
-				TweenMax.to(title, 0.5, {scale: 0.2, right: "-36px", ease:Power1.easeOut });
+				TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut });
 			}
 			
 		});
