@@ -13,7 +13,8 @@ var galleryWrapper = document.getElementById("gallery"),
 		galleryTitle = document.getElementById("gallery-title"),
 		closeGalleryBtn = document.getElementById("btn-close-gallery");
 
-function Gallery(latlng, map, args) {
+function Gallery(title, latlng, map, args) {
+	this.title = title;
 	this.latlng = latlng;	
 	this.args = args;	
 	this.setMap(map);	2
@@ -108,6 +109,7 @@ Gallery.prototype.draw = function() {
 Gallery.prototype.showPhotos = function() {
 
 	galleryTitle.innerHTML = this.args.title;
+	window.location.hash = this.args.title;
 
 	TweenMax.to(galleryWrapper, 0.5, {display: "block", opacity: 1, ease:Power1.easeOut });
 	
@@ -129,6 +131,7 @@ Gallery.prototype.showPhotos = function() {
 
 // Remove Photo Gallery
 function removeGallery() {
+	history.pushState("", document.title, window.location.pathname + window.location.search);
 	while (photosWrapper.hasChildNodes()) {
 	    photosWrapper.removeChild(photosWrapper.lastChild);
 	}	
