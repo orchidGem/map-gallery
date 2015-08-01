@@ -69,35 +69,18 @@ function initialize() {
 	// Check for hash tag in URL
 	var galleryHash = window.location.hash;
 	if(galleryHash) {
-	
 		galleryHash = galleryHash.replace("#", "");
-		console.log("Search Term: " + galleryHash);
-		
 		var gallery = getGallery(galleries, galleryHash);
-		gallery.showPhotos();
-
+		if(gallery) {
+			gallery.showPhotos();
+		}
+	} else {
+		console.log("show main page");
 	}
 	
-	// Show specific gallery
-	myvar = getQueryVariable("show");
-	if(myvar) {
-		france.showPhotos();
-	}
-	
-}
+} // End Initialize
 				
 google.maps.event.addDomListener(window, 'load', initialize);
-
-function getQueryVariable(variable)
-{
-	var query = location.search.substring(1);
-	var vars = query.split("&");
-	for (var i=0;i<vars.length;i++) {
-	       var pair = vars[i].split("=");
-	       if(pair[0] == variable){return pair[1];}
-	}
-	return(false);
-}
 
 
 function getGallery(array, searchTerm){

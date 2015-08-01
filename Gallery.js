@@ -110,8 +110,11 @@ Gallery.prototype.showPhotos = function() {
 
 	galleryTitle.innerHTML = this.args.title;
 	window.location.hash = this.args.title;
-
-	TweenMax.to(galleryWrapper, 0.5, {display: "block", opacity: 1, ease:Power1.easeOut });
+	
+	var tl = new TimelineMax();
+	tl.to(galleryWrapper, 1, {width: "100%", left: 0, display: "block", opacity: 1, ease:Power1.easeOut })
+	.to([photosWrapper, closeGalleryBtn], 0.5, {opacity: 1, display: "block"})
+	;
 	
 	//Append images to Gallery Wrapper
 	if(this.args.numImages) {

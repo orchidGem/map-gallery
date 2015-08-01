@@ -14,7 +14,8 @@ html, body, #map-canvas {
   z-index: 999;
   overflow: hidden;3
   text-align: center;
-  width: 100%;
+  width: 0;
+  left: 50%;
   height: 100%;
   display: none;
   opacity: 0;
@@ -27,6 +28,8 @@ html, body, #map-canvas {
   font-size: 30px;
   text-decoration: none;
   z-index: 999;
+  display: none;
+  opacity: 0;
 }
 #gallery #photos {
   height: 100%;
@@ -36,6 +39,8 @@ html, body, #map-canvas {
   overflow-x: hidden;
   z-index: 800;
   padding-top: 50px;
+  display: none;
+  opacity: 0;
 }
 #gallery h2 {
   color: white;
@@ -50,9 +55,11 @@ html, body, #map-canvas {
   width: auto;
   margin: 0 auto 100px;
   opacity: 0;
+  transform: scale(0.98, 0.98);
 }
 #photos img:first-of-type {
   opacity: 1;
+  transform: scale(1,1);
 }
 .marker h2 {
   transform: scale(0, 0);
