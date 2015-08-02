@@ -13,10 +13,19 @@ header {
 	left: 10px;
 	z-index: 900;
 	opacity: 0;
+	padding: 0 10px 10px 10px;
 }
 h1 {
 	margin-top: 10px;
 	color: white;
+	font-family: 'Lobster', serif;
+	font-size: 2em;
+	text-shadow: 1px 1px 5px black;
+}
+h1 .fa {
+	font-size: 23px;
+	margin-left: 	5px;
+	cursor: pointer;
 }
 footer {
 	position: absolute;
@@ -25,12 +34,9 @@ footer {
 	width: 90%;
 	color: #067e71;
 }
-.fa:before {
-	color: #E2E0E0;
-	font-size: 20px;
-}
-.fa {
-	margin-right: 15px;
+footer .fa {
+	font-size: 25px;
+	color: white;
 }
 
 #gallery {
@@ -92,10 +98,11 @@ footer {
   top: -5px;
   color: white;
   z-index: 0;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px black;
 }
 .marker-icon {
   position: absolute;
-  transform: scale(0.9, 0.9); 
   cursor: pointer;
   z-index: 1;
 }
