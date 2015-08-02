@@ -64,7 +64,13 @@ function initialize() {
 		numImages: 2,
 	});
 	
-	var galleries = [france, italy, seattle, japan, ]
+	var china = new Gallery("china", new google.maps.LatLng(39.904211, 116.407395), map, { 
+		title: "china",
+		description: "Highschool trip",
+		numImages: 10,
+	});	
+	
+	var galleries = [france, italy, seattle, japan, china]
 	
 	// Check for hash tag in URL
 	var galleryHash = window.location.hash;
@@ -78,9 +84,17 @@ function initialize() {
 		console.log("show main page");
 	}
 	
+	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    console.log("map loaded");
+    var header = document.getElementsByTagName('header');
+    TweenMax.to(header, 1.5, {opacity: 1, scale: 1, ease:Power2.easeOut});
+});
+	
 } // End Initialize
 				
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 
 
 function getGallery(array, searchTerm){

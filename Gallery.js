@@ -109,10 +109,11 @@ Gallery.prototype.draw = function() {
 Gallery.prototype.showPhotos = function() {
 
 	galleryTitle.innerHTML = this.args.title;
+	console.log(this.args.title);
 	window.location.hash = this.args.title;
 	
 	var tl = new TimelineMax();
-	tl.to(galleryWrapper, 1, {width: "100%", left: 0, display: "block", opacity: 1, ease:Power1.easeOut })
+	tl.to(galleryWrapper, 0.8, {width: "100%", left: 0, display: "block", opacity: 1, ease:Power1.easeOut })
 	.to([photosWrapper, closeGalleryBtn], 0.5, {opacity: 1, display: "block"})
 	;
 	
@@ -135,10 +136,13 @@ Gallery.prototype.showPhotos = function() {
 // Remove Photo Gallery
 function removeGallery() {
 	history.pushState("", document.title, window.location.pathname + window.location.search);
-	while (photosWrapper.hasChildNodes()) {
+	while (photosWrapper.childNodes.length > 3) {
 	    photosWrapper.removeChild(photosWrapper.lastChild);
-	}	
-	TweenMax.to(galleryWrapper, 0.5, {display: "none", opacity: 0, ease:Power1.easeOut });
+	}		
+	var tl = new TimelineMax();
+	tl.to([photosWrapper, closeGalleryBtn], 0.5, {opacity: 0, display: "none"})
+	.to(galleryWrapper, 0.5, {width: "0", left: "50%", display: "none", opacity: 0, ease:Power1.easeOut })
+	;
 }
 
 closeGalleryBtn.addEventListener("click", function(e){
