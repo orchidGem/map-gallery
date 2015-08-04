@@ -39,7 +39,7 @@ Gallery.prototype.draw = function() {
 		div.style.background = "transparent";
 		
 		var icon = document.createElement("IMG"),
-			title = document.createElement("H2");
+			title = document.createElement("H3");
 			
 		icon.setAttribute("src", "marker.png");
 		icon.setAttribute("class", "marker-icon");
@@ -81,9 +81,9 @@ Gallery.prototype.draw = function() {
 		TweenMax.to(icon, 0.5, {scale: 1.1, ease:Power1.easeOut });
 		
 		if(this.windowPosition === "left"){
-			TweenMax.to(title, 0.2, {scale: 1, left: "50px", ease:Power1.easeOut });
+			TweenMax.to(title, 0.2, {scale: 1, left: "50px", ease:Power1.easeOut, zIndex: "9999", opacity: 1 });
 		} else {
-			TweenMax.to(title, 0.2, {scale: 1, right: "10px", ease:Power1.easeOut });
+			TweenMax.to(title, 0.2, {scale: 1, right: "10px", ease:Power1.easeOut, zIndex: "9999", opacity: 1 });
 		}
 
 	});
@@ -91,9 +91,9 @@ Gallery.prototype.draw = function() {
 	google.maps.event.addDomListener(div, "mouseleave", function(event) {
 			TweenMax.to(icon, 0.5, {scale: 1, ease:Power1.easeOut });
 			if(this.windowPosition === "left"){
-				TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut });
+				TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
 			} else {
-				TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut });
+				TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
 			}
 			
 		});

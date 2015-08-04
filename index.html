@@ -12,7 +12,7 @@
   
   	<header>
   		<nav>
-  			<h1>Laura's Travel Map <i class="fa fa-info-circle"></i></h1>
+  			<h1>Laura's Travel Map <i id="btn-about" class="fa fa-info-circle bounce-me"></i></h1>
   		</nav>
   	</header>
   	
@@ -21,15 +21,24 @@
   		<div id="photos">
 	  		<h2 id="gallery-title"></h2>
   		</div>
-  		<a id="btn-close-gallery" href="">X</a>
+  		<i id="btn-close-gallery" class="fa fa-2x fa-times"></i>
 		</div>
 
     <div id="map-canvas"></div>
     
+    <div id="about">
+    	<div class="container">
+    		<i id="btn-close-about" class="fa fa-times"></i>
+    		<p><img src="laura.jpg">
+    		<h2>Hi, I'm Laura Evans</h2>
+    		<p>Aliquam quis tincidunt lorem. Phasellus imperdiet et nisi sit amet tristique. Sed maximus nibh eros. Vestibulum aliquam quam vel nisi tempus, non eleifend lectus aliquam. Sed ultricies rutrum rutrum. Suspendisse et nibh neque. Curabitur purus mauris, facilisis sed nisi vitae, congue sodales justo. Proin risus nunc, sodales at sapien quis, consectetur imperdiet tellus.</p>
+    	</div>
+    </div>
+    
     <footer>
-    	<a href=""><i class="fa fa-facebook-square"></i></a>
-    	<a href=""><i class="fa fa-twitter-square"></i></a>
-    	<a href=""><i class="fa fa-instagram"></i></a>
+    	<a class="bounce" href=""><i class="fa fa-facebook-square"></i></a>
+    	<a class="bounce" href=""><i class="fa fa-twitter-square"></i></a>
+    	<a class="bounce" href=""><i class="fa fa-instagram"></i></a>
   	</footer>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>

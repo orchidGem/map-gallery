@@ -1,4 +1,4 @@
-html, body, #map-canvas {
+html, body, #map-canvas, #about {
   height: 100%;
   width: 100%;
   margin: 0px;
@@ -15,17 +15,51 @@ header {
 	opacity: 0;
 	padding: 0 10px 10px 10px;
 }
+p{font-size: 14px;}
+h1, h2 {
+	font-family: 'Lobster', serif;
+}
 h1 {
 	margin-top: 10px;
 	color: white;
-	font-family: 'Lobster', serif;
-	font-size: 2em;
+	font-size: 2.3em;
 	text-shadow: 1px 1px 5px black;
 }
+h2 {
+	font-size: 2em;
+}
 h1 .fa {
-	font-size: 23px;
-	margin-left: 	5px;
+	font-size: 26px;
+  color: white;
+  margin-right: 4px;
+  cursor: pointer;
+}
+i {
 	cursor: pointer;
+}
+i:hover {
+	color: #9AC3C5;
+}
+#map-canvas {
+	opacity: 0;
+}
+#about {
+  background-color: black;
+  position: absolute;
+  left: -320px;
+  width: 320px;
+  height: 100%;
+  top: 0px;
+  text-align: center;
+  color: white;
+}
+#about .container {
+	padding: 10px;
+}
+#btn-close-about {
+	position: absolute;
+	right: 10px;
+	top: 10px;
 }
 footer {
 	position: absolute;
@@ -33,6 +67,7 @@ footer {
 	padding: 0 10px 10px 10px;
 	width: 90%;
 	color: #067e71;
+	opacity: 0;
 }
 footer .fa {
 	font-size: 25px;
@@ -41,7 +76,7 @@ footer .fa {
 
 #gallery {
   position: absolute;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   z-index: 999;
   overflow: hidden;3
   text-align: center;
@@ -92,14 +127,19 @@ footer .fa {
   opacity: 1;
   transform: scale(1,1);
 }
-.marker h2 {
+.marker {
+	opacity: 0;
+}
+.marker h3 {
   transform: scale(0, 0);
   position: absolute;
-  top: -5px;
+  top: -10px;
   color: white;
   z-index: 0;
   letter-spacing: 1px;
   text-shadow: 1px 1px 5px black;
+  font-size: 18px;
+  opacity: 0;
 }
 .marker-icon {
   position: absolute;

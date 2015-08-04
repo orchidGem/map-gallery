@@ -37,9 +37,10 @@ function initialize() {
 	  }
 	];
 	
-	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	mapContainer = document.getElementById('map-canvas');
+	map = new google.maps.Map(mapContainer, mapOptions);
 	map.setOptions({styles: styles});
-			
+	
 	var france = new Gallery( "france", myLatlng, map, { 
 		title: "france",
 		description: "Honeymoon to France, 2015",
@@ -72,6 +73,22 @@ function initialize() {
 	
 	var galleries = [france, italy, seattle, japan, china]
 	
+	// Tiles Loaded Event Handler - show markers
+	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    
+    var header = document.getElementsByTagName('header'),
+	    	footer = document.getElementsByTagName('footer'),
+	    	markers = document.getElementsByClassName('marker'),
+	    	tl = new TimelineMax();
+	  tl  
+	  .to(markers, 0, {opacity: 1})	
+	  .to(mapContainer, 0.5, {opacity: 1}, "begin")
+	  .fromTo(header, 1, {top: "-100px"}, {top: "10px", opacity: 1, scale: 1, ease:Power2.easeOut}, "begin")
+    .fromTo(footer, 1, {bottom: "-100px"}, {bottom: "10px", opacity: 1, ease:Power2.easeOut}, "begin")
+    .staggerFrom(markers, 0.6, {top:"-800px", ease: Elastic.easeOut.config(1, 1)}, 0.15)
+    ;
+    
+	
 	// Check for hash tag in URL
 	var galleryHash = window.location.hash;
 	if(galleryHash) {
@@ -83,18 +100,15 @@ function initialize() {
 	} else {
 		console.log("show main page");
 	}
-	
-	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-    console.log("map loaded");
-    var header = document.getElementsByTagName('header');
-    TweenMax.to(header, 1.5, {opacity: 1, scale: 1, ease:Power2.easeOut});
+    
 });
+
+document.getElementById("btn-about").addEventListener("click", showAbout);
+document.getElementById("btn-close-about").addEventListener("click", hideAbout);
 	
 } // End Initialize
 				
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
 
 
 function getGallery(array, searchTerm){
@@ -103,4 +117,31 @@ function getGallery(array, searchTerm){
 			return array[i];
 		}
 	}
+}
+
+function showAbout(){
+	var header = document.getElementsByTagName('header'),
+    	footer = document.getElementsByTagName('footer'),
+    	markers = document.getElementsByClassName('marker'),
+    	about = document.getElementById("about"),
+    	tl = new TimelineMax();
+    	
+		  tl  
+		  .to([mapContainer, header, footer], 0.5, {left: "320px"}, "begin")
+		  .to(about, 0.5, {left: 0}, "begin")
+	    ;
+}
+
+function hideAbout(){
+console.log("close about");
+	var header = document.getElementsByTagName('header'),
+    	footer = document.getElementsByTagName('footer'),
+    	markers = document.getElementsByClassName('marker'),
+    	about = document.getElementById("about"),
+    	tl = new TimelineMax();
+    	
+		  tl  
+		  .to([mapContainer, header, footer], 0.5, {left: "0px"}, "begin")
+		  .to(about, 0.5, {left: "-320px"}, "begin")
+	    ;
 }
