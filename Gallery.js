@@ -134,6 +134,15 @@ Gallery.prototype.showPhotos = function() {
 	closeGallery.innerHTML = "See more galleries";
 	photosWrapper.appendChild(closeGallery);
 	
+	var facebook = document.getElementById("gallery-fb"),
+			twitter = document.getElementById("gallery-tw");
+	
+	var url = "http://www.laura-evans.com/travel-map#" + this.args.title,
+			desc = this.args.title + " travel photography";
+	
+	facebook.setAttribute("href", "http://www.facebook.com/sharer/sharer.php?u=http://laura-evans.com/travel-map%23" + this.args.title + "&title=Travel Photo Gallery of " + this.args.title);
+	twitter.setAttribute("href", "http://twitter.com/intent/tweet?status=Travel Photo Gallery of " + this.args.title + "+http://laura-evans.com/travel-map%23" + this.args.title);
+	
 	closeGallery.addEventListener("click", function(e){
 		e.preventDefault();
 		removeGallery();

@@ -145,3 +145,20 @@ console.log("close about");
 		  .to(about, 0.5, {left: "-320px"}, "begin")
 	    ;
 }
+
+// Animate photo fade on scroll
+$(document).ready(function() {
+    /* Every time the window is scrolled ... */
+    $("#photos").scroll( function(){
+        /* Check the location of each desired element */
+        $('.gallery-img').each( function(i){
+            var bottom_of_object = $(this).offset().top + 100;
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > bottom_of_object ){
+                var img = $(this);
+								TweenMax.to(img, 2, {opacity: 1, scale: 1});
+            }
+        }); 
+    });
+});

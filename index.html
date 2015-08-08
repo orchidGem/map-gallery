@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<title>Laura's Travel Map</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Laura's Travel Map</title>
-    <link href='http://fonts.googleapis.com/css?family=Lobster|Roboto:400,300,900' rel='stylesheet' type='text/css'>
     
+    <meta property="og:title" content="Laura's Travel Map"/>
+    <meta property="og:description" content="Photo Gallery and map of travel photographs"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="http://www.laura-evans.com/travel-map"/>
+    <meta property="og:site_name" content="Laura's Travel Map"/>
+    <meta property="og:image" content=""/>
+    
+    
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Roboto:400,300,900' rel='stylesheet' type='text/css'>
 		<link href="style.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
@@ -22,9 +30,10 @@
 	  		<h2 id="gallery-title"></h2>
   		</div>
   		<div id="gallery-share">
-  			<a class="bounce" href=""><i class="fa fa-facebook-square"></i></a>
-	    	<a class="bounce" href=""><i class="fa fa-twitter-square"></i></a>
-	    	<a class="bounce" href=""><i class="fa fa-instagram"></i></a>
+  			<a id="gallery-fb" onclick="return !window.open(this.href, 'Facebook', 'width=500,height=500')"
+    target="_blank" href=""><i class="fa fa-facebook-square"></i></a>
+				<a id="gallery-tw" onclick="return !window.open(this.href, 'Facebook', 'width=500,height=500')"
+    target="_blank" href=""><i class="fa fa-twitter-square"></i></a>
   		</div>
   		<i id="btn-close-gallery" class="fa fa-2x fa-times"></i>
 		</div>
@@ -40,35 +49,18 @@
     	</div>
     </div>
     
-    <footer>
-    	<a class="bounce" href=""><i class="fa fa-facebook-square"></i></a>
-    	<a class="bounce" href=""><i class="fa fa-twitter-square"></i></a>
-    	<a class="bounce" href=""><i class="fa fa-instagram"></i></a>
+    <footer>	    
+				<a onclick="return !window.open(this.href, 'Facebook', 'width=500,height=500')"
+    target="_blank" class="addthis_button_facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://laura-evans.com/travel-map&title=TravelMapGallery"><i class="fa fa-facebook-square"></i></a>
+				<a onclick="return !window.open(this.href, 'Facebook', 'width=500,height=500')"
+    target="_blank" class="addthis_button_twitter" href="http://twitter.com/intent/tweet?status=Travel Map Gallery+http://laura-evans.com/travel-map"><i class="fa fa-twitter-square"></i></a>				
   	</footer>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
     <script src="Gallery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
     <script src="app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="//s7.addthis.com/resources/js/300/addthis_widget.js#pubid=ra-5465185c08a210bd" async="async"></script>
-    <script>
-    	// Animate photo fade on scroll
-			$(document).ready(function() {
-			    /* Every time the window is scrolled ... */
-			    $("#photos").scroll( function(){
-			        /* Check the location of each desired element */
-			        $('.gallery-img').each( function(i){
-			            var bottom_of_object = $(this).offset().top + 100;
-			            var bottom_of_window = $(window).scrollTop() + $(window).height();
-			            /* If the object is completely visible in the window, fade it it */
-			            if( bottom_of_window > bottom_of_object ){
-			                var img = $(this);
-											TweenMax.to(img, 2, {opacity: 1, scale: 1});
-			            }
-			        }); 
-			    });
-			});
-    </script>
+
   </body>
 </html>
