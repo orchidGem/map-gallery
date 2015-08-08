@@ -21,6 +21,11 @@
   		<div id="photos">
 	  		<h2 id="gallery-title"></h2>
   		</div>
+  		<div id="gallery-share">
+  			<a class="bounce" href=""><i class="fa fa-facebook-square"></i></a>
+	    	<a class="bounce" href=""><i class="fa fa-twitter-square"></i></a>
+	    	<a class="bounce" href=""><i class="fa fa-instagram"></i></a>
+  		</div>
   		<i id="btn-close-gallery" class="fa fa-2x fa-times"></i>
 		</div>
 
@@ -46,31 +51,24 @@
     <script src="Gallery.js"></script>
     <script src="app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/resources/js/300/addthis_widget.js#pubid=ra-5465185c08a210bd" async="async"></script>
     <script>
     	// Animate photo fade on scroll
 			$(document).ready(function() {
-			    
 			    /* Every time the window is scrolled ... */
 			    $("#photos").scroll( function(){
-			    
 			        /* Check the location of each desired element */
 			        $('.gallery-img').each( function(i){
-			        	console.log($(this));
-			            
 			            var bottom_of_object = $(this).offset().top + 100;
 			            var bottom_of_window = $(window).scrollTop() + $(window).height();
-			            
 			            /* If the object is completely visible in the window, fade it it */
 			            if( bottom_of_window > bottom_of_object ){
-			                
 			                var img = $(this);
-											TweenMax.to(img, 1.5, {opacity: 1, scale: 1, ease:Power2.easeOut});
+											TweenMax.to(img, 2, {opacity: 1, scale: 1});
 			            }
 			        }); 
 			    });
 			});
     </script>
-    
-    
   </body>
 </html>

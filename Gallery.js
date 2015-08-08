@@ -11,7 +11,9 @@
 var galleryWrapper = document.getElementById("gallery"),
 		photosWrapper = document.getElementById("photos"),
 		galleryTitle = document.getElementById("gallery-title"),
+		galleryShare = document.getElementById("gallery-share"),
 		closeGalleryBtn = document.getElementById("btn-close-gallery");
+		
 
 function Gallery(title, latlng, map, args) {
 	this.title = title;
@@ -51,14 +53,13 @@ Gallery.prototype.draw = function() {
 		if (typeof(self.args.marker_id) !== 'undefined') {
 			div.dataset.marker_id = self.args.marker_id;
 		}
-		
-		var icon = div.childNodes[0],
-			title = div.childNodes[1];
-	
+			
 		var panes = this.getPanes();
 		panes.overlayImage.appendChild(div);
 		
 	}
+	icon = div.childNodes[0];
+	title = div.childNodes[1];
 	
 	var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
 	
@@ -77,7 +78,7 @@ Gallery.prototype.draw = function() {
 	}
 	
 	google.maps.event.addDomListener(div, "mouseenter", function(event) {	
-
+	
 		TweenMax.to(icon, 0.5, {scale: 1.1, ease:Power1.easeOut });
 		
 		if(this.windowPosition === "left"){
@@ -89,18 +90,19 @@ Gallery.prototype.draw = function() {
 	});
 	
 	google.maps.event.addDomListener(div, "mouseleave", function(event) {
-			TweenMax.to(icon, 0.5, {scale: 1, ease:Power1.easeOut });
-			if(this.windowPosition === "left"){
-				TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
-			} else {
-				TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
-			}
-			
-		});
+		title = self.div.childNodes[1];
+		TweenMax.to(icon, 0.5, {scale: 1, ease:Power1.easeOut });
+		if(this.windowPosition === "left"){
+			TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
+		} else {
+			TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
+		}
 		
-		google.maps.event.addDomListener(div, "click", function(event) {
-			self.showPhotos();
-		});
+	});
+	
+	google.maps.event.addDomListener(div, "click", function(event) {
+		self.showPhotos();
+	});
 	
 };
 
@@ -109,12 +111,11 @@ Gallery.prototype.draw = function() {
 Gallery.prototype.showPhotos = function() {
 
 	galleryTitle.innerHTML = this.args.title;
-	console.log(this.args.title);
 	window.location.hash = this.args.title;
 	
 	var tl = new TimelineMax();
-	tl.to(galleryWrapper, 0.8, {width: "100%", left: 0, display: "block", opacity: 1, ease:Power1.easeOut })
-	.to([photosWrapper, closeGalleryBtn], 0.5, {opacity: 1, display: "block"})
+	tl.to(galleryWrapper, 1, {width: "100%", left: 0, display: "block", opacity: 1, ease:Power1.easeInOut })
+	.to([photosWrapper, closeGalleryBtn, galleryShare], 0.5, {opacity: 1, display: "block"})
 	;
 	
 	//Append images to Gallery Wrapper
@@ -126,6 +127,17 @@ Gallery.prototype.showPhotos = function() {
 		    photosWrapper.appendChild(img);			    
 		}
 	}
+	
+	var closeGallery = document.createElement('a');
+	closeGallery.setAttribute("id", "view-galleries");
+	closeGallery.setAttribute("href", "#");
+	closeGallery.innerHTML = "See more galleries";
+	photosWrapper.appendChild(closeGallery);
+	
+	closeGallery.addEventListener("click", function(e){
+		e.preventDefault();
+		removeGallery();
+	});
 	
 	photosWrapper.scrollTop = 0; // Reset scroll
 	photosWrapper.onscroll = function (e) {  
@@ -140,7 +152,8 @@ function removeGallery() {
 	    photosWrapper.removeChild(photosWrapper.lastChild);
 	}		
 	var tl = new TimelineMax();
-	tl.to([photosWrapper, closeGalleryBtn], 0.5, {opacity: 0, display: "none"})
+	tl
+	.to([photosWrapper, closeGalleryBtn, galleryShare], 0.5, {opacity: 0, display: "none"})
 	.to(galleryWrapper, 0.5, {width: "0", left: "50%", display: "none", opacity: 0, ease:Power1.easeOut })
 	;
 }

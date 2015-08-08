@@ -83,13 +83,21 @@ function initialize() {
 	  tl  
 	  .to(markers, 0, {opacity: 1})	
 	  .to(mapContainer, 0.5, {opacity: 1}, "begin")
-	  .fromTo(header, 1, {top: "-100px"}, {top: "10px", opacity: 1, scale: 1, ease:Power2.easeOut}, "begin")
-    .fromTo(footer, 1, {bottom: "-100px"}, {bottom: "10px", opacity: 1, ease:Power2.easeOut}, "begin")
-    .staggerFrom(markers, 0.6, {top:"-800px", ease: Elastic.easeOut.config(1, 1)}, 0.15)
-    ;
+	  .fromTo(header, 2, {y: "-100"}, {y: "0", opacity: 1, scale: 1, ease:Expo.easeInOut}, "begin")
+    .fromTo(footer, 2, {bottom: "-100px"}, {bottom: "10px", opacity: 1, ease:Expo.easeInOut}, "begin")
+    .staggerFrom(markers, 0.6, {y:"-800px", ease: Elastic.easeOut.config(1, 1), onComplete: galleryHash(galleries) }, 0.15)
+    ;	
     
+});
+
+document.getElementById("btn-about").addEventListener("click", showAbout);
+document.getElementById("btn-close-about").addEventListener("click", hideAbout);
 	
-	// Check for hash tag in URL
+} // End Initialize
+				
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function galleryHash(galleries){
 	var galleryHash = window.location.hash;
 	if(galleryHash) {
 		galleryHash = galleryHash.replace("#", "");
@@ -100,15 +108,7 @@ function initialize() {
 	} else {
 		console.log("show main page");
 	}
-    
-});
-
-document.getElementById("btn-about").addEventListener("click", showAbout);
-document.getElementById("btn-close-about").addEventListener("click", hideAbout);
-	
-} // End Initialize
-				
-google.maps.event.addDomListener(window, 'load', initialize);
+}
 
 
 function getGallery(array, searchTerm){
