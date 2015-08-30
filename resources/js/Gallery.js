@@ -12,6 +12,7 @@ var galleryWrapper = document.getElementById("gallery"),
 		photosWrapper = document.getElementById("photos"),
 		galleryTitle = document.getElementById("gallery-title"),
 		galleryShare = document.getElementById("gallery-share"),
+		cameraCloned = document.getElementById("camera"),
 		closeGalleryBtn = document.getElementById("btn-close-gallery");
 		
 
@@ -19,7 +20,7 @@ function Gallery(title, latlng, map, args) {
 	this.title = title;
 	this.latlng = latlng;	
 	this.args = args;	
-	this.setMap(map);	2
+	this.setMap(map);
 }
 
 Gallery.prototype = new google.maps.OverlayView();
@@ -29,7 +30,9 @@ Gallery.prototype = new google.maps.OverlayView();
 Gallery.prototype.draw = function() {
 	
 	var self = this,
-			div = this.div;			
+			div = this.div,
+			icon = document.createElement("DIV"),
+			title = document.createElement("H3");	
 
 	if (!div) {
 	
@@ -39,16 +42,13 @@ Gallery.prototype.draw = function() {
 		div.style.cursor = 'pointer';
 		div.style.overflow = 'visible';
 		div.style.background = "transparent";
-		
-		var icon = document.createElement("IMG"),
-			title = document.createElement("H3");
-			
-		icon.setAttribute("src", "marker.png");
+
+		icon.innerHTML = cameraCloned.innerHTML;
 		icon.setAttribute("class", "marker-icon");
 		title.appendChild(document.createTextNode(self.args.title));
 		
 		div.appendChild(icon);
-		div.appendChild(title)
+		div.appendChild(title);
 		
 		if (typeof(self.args.marker_id) !== 'undefined') {
 			div.dataset.marker_id = self.args.marker_id;
@@ -58,8 +58,6 @@ Gallery.prototype.draw = function() {
 		panes.overlayImage.appendChild(div);
 		
 	}
-	icon = div.childNodes[0];
-	title = div.childNodes[1];
 	
 	var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
 	
@@ -68,35 +66,29 @@ Gallery.prototype.draw = function() {
 		div.style.top = (point.y - 20) + 'px';
 	}
 	
-	// Set position of marker title based on position inside window
-	if( (point.x) < (window.innerWidth / 2) ) {
-		title.style.left = "2px";
-		div.windowPosition = "left";
-	} else {
-		title.style.right = "-36px";
-		div.windowPosition = "right";
-	}
-	
 	google.maps.event.addDomListener(div, "mouseenter", function(event) {	
 	
-		TweenMax.to(icon, 0.5, {scale: 1.1, ease:Power1.easeOut });
 		
+/*
 		if(this.windowPosition === "left"){
 			TweenMax.to(title, 0.2, {scale: 1, left: "50px", ease:Power1.easeOut, zIndex: "9999", opacity: 1 });
 		} else {
 			TweenMax.to(title, 0.2, {scale: 1, right: "10px", ease:Power1.easeOut, zIndex: "9999", opacity: 1 });
 		}
+*/
 
 	});
 	
 	google.maps.event.addDomListener(div, "mouseleave", function(event) {
+	
+/*
 		title = self.div.childNodes[1];
-		TweenMax.to(icon, 0.5, {scale: 1, ease:Power1.easeOut });
 		if(this.windowPosition === "left"){
 			TweenMax.to(title, 0.2, {scale: 0.2, left: "2px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
 		} else {
 			TweenMax.to(title, 0.2, {scale: 0.2, right: "-36px", ease:Power1.easeOut, zIndex: "0", opacity: 0 });
 		}
+*/
 		
 	});
 	
@@ -151,7 +143,7 @@ Gallery.prototype.showPhotos = function() {
 	photosWrapper.scrollTop = 0; // Reset scroll
 	photosWrapper.onscroll = function (e) {  
 		console.log("scrolling");
-	} 
+	} ;
 };
 
 // Remove Photo Gallery

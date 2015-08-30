@@ -6,45 +6,47 @@ html, body, #map-canvas, #about {
   position: relative;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  color: #666666;
-}
+  color: #666666; }
+
 header {
-	position: absolute;
-	left: 10px;
-	z-index: 900;
-	opacity: 0;
-	padding: 0 10px 10px 10px;
-}
-p{font-size: 14px;}
+  position: absolute;
+  z-index: 900;
+  opacity: 0;
+  padding: 0 10px 10px 20px; }
+
+p {
+  font-size: 14px; }
+
 h1, h2 {
-	font-family: 'Lobster', serif;
-}
+  font-family: 'Lobster', serif; }
+
 h1 {
-	margin-top: 10px;
-	color: white;
-	font-size: 2.3em;
-	text-shadow: 1px 1px 5px black;
-}
+  margin-top: 10px;
+  color: white;
+  font-size: 2.3em;
+  text-shadow: 0px -1px 1px black; }
+
 h2 {
-	font-size: 2em;
-}
+  font-size: 2em; }
+
 h1 .fa {
-	font-size: 26px;
+  font-size: 26px;
   color: white;
   margin-right: 4px;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
 i {
-	cursor: pointer;
-	transition: all 0.3s ease;
-	color: #fff;
-}
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff; }
+
 i:hover, #view-galleries:hover {
-	color: #9e9e9e !important;
-}
+  color: #9e9e9e !important; }
+
 #map-canvas {
-	opacity: 0;
-}
+  opacity: 0;
+  background-color: #03778a !important; }
+
 #about {
   background-color: black;
   position: absolute;
@@ -54,40 +56,44 @@ i:hover, #view-galleries:hover {
   top: 0px;
   text-align: center;
   color: white;
-}
+  line-height: 1.3em;
+  text-align: left; }
+
+#about a {
+  color: white; }
+
 #about .container {
-	padding: 10px;
-}
+  padding: 20px; }
+
 #btn-close-about {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-}
+  position: absolute;
+  right: 10px;
+  top: 10px; }
+
 footer {
-	position: absolute;
-	bottom: 0;
-	padding: 0 10px 10px 10px;
-	width: 90%;
-	color: #067e71;
-	opacity: 0;
-}
+  position: absolute;
+  bottom: 0;
+  padding: 0 10px 10px 20px;
+  width: 90%;
+  color: #067e71;
+  opacity: 0; }
+
 footer .fa {
-	font-size: 25px;
-	color: white;
-}
+  font-size: 25px;
+  color: white; }
 
 #gallery {
   position: absolute;
-  background: rgba(0, 0, 0, 0.95);
+  background: white;
   z-index: 999;
-  overflow: hidden;3
+  overflow: hidden;
   text-align: center;
   width: 0;
   left: 50%;
   height: 100%;
   display: none;
-  opacity: 0;
-}
+  opacity: 0; }
+
 #gallery #btn-close-gallery, #gallery-share {
   position: absolute;
   right: 2%;
@@ -97,25 +103,25 @@ footer .fa {
   text-decoration: none;
   z-index: 999;
   display: none;
-  opacity: 0;
-}
+  opacity: 0; }
+
 #gallery-share {
-	left: 2%;
-	right: inherit;
-	font-size: 20px;
-}
+  left: 2%;
+  right: inherit;
+  font-size: 20px; }
+
 #view-galleries {
-	font-family: 'Lobster', serif;
-	color: white;
-	transition: all 0.3s ease;
-	display: block;
-	text-align: center;
-	margin-bottom: 25px;
-	margin-top: -50px;
-	text-decoration: none;
-	font-size: 30px;
-	text-transform: capitalize;
-}
+  font-family: 'Lobster', serif;
+  color: white;
+  transition: all 0.3s ease;
+  display: block;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: -50px;
+  text-decoration: none;
+  font-size: 30px;
+  text-transform: capitalize; }
+
 #gallery #photos {
   height: 100%;
   width: 100%;
@@ -124,15 +130,15 @@ footer .fa {
   overflow-x: hidden;
   z-index: 800;
   display: none;
-  opacity: 0;
-}
+  opacity: 0; }
+
 #gallery h2 {
   color: white;
   margin: 20px auto;
   font-weight: 100;
   text-align: center;
-  text-transform: capitalize;
-}
+  text-transform: capitalize; }
+
 .gallery-img {
   display: block;
   max-height: 100%;
@@ -140,28 +146,59 @@ footer .fa {
   width: auto;
   margin: 0 auto 100px;
   opacity: 0;
-  transform: scale(0.94, 0.94);
-}
+  transform: scale(0.94, 0.94); }
+
 #photos img:first-of-type {
   opacity: 1;
-  transform: scale(1,1);
-}
+  transform: scale(1, 1); }
+
 .marker {
-	opacity: 0;
-}
-.marker h3 {
-  transform: scale(0, 0);
-  position: absolute;
-  top: -10px;
-  color: white;
-  z-index: 0;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 5px black;
-  font-size: 18px;
   opacity: 0;
-}
+  background-color: red;
+  width: 50px;
+  height: 40px; }
+  .marker h3 {
+    transform: scale(0, 0);
+    position: absolute;
+    top: 0px;
+    color: black;
+    z-index: 0;
+    letter-spacing: 1px;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.5s;
+    left: 0;
+    background: white;
+    border-radius: 2px;
+    padding: 5px 10px;
+    top: 0px; }
+    .marker h3:before {
+      content: "\A";
+      border-style: solid;
+      border-width: 15px 10px 0px 10px;
+      border-color: white transparent transparent transparent;
+      position: absolute;
+      left: 0px;
+      bottom: -5px;
+      z-index: -1; }
+
+#camera {
+  display: none; }
+
 .marker-icon {
   position: absolute;
   cursor: pointer;
   z-index: 1;
-}
+  transform-origin: center;
+  transform: scale(0.6, 0.6);
+  fill: white;
+  transition: all 0.5s; }
+
+.marker:hover .marker-icon {
+  transform: scale(0.7, 0.7); }
+
+.marker:hover h3 {
+  opacity: 1;
+  transform: scale(1, 1);
+  top: -30px;
+  left: 50%; }
